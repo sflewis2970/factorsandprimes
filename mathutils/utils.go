@@ -90,12 +90,12 @@ func FindNumber(nbrsList []int, nbrToFind int) bool {
 
 // GenerateInts ...Generate numbers builds a list of numbers
 func GenerateInts(nbrsToGenerate, maxValue int) ([]int, error) {
-	if nbrsToGenerate == 0 {
+	if nbrsToGenerate <= 0 {
 		enterNumbersToGenerate()
 	}
 
 	// Ask the user to enter the maximum value
-	if maxValue == 0 {
+	if maxValue <= 0 {
 		enterMaximumValue(nbrsToGenerate)
 	}
 
