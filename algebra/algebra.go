@@ -67,11 +67,8 @@ func BuildFactorsList(nbrVal int) []int {
 
 // BuildFactorsMap ...BuildFactorsMap takes a list of numbers and returns a map of numbers of factors
 func BuildFactorsMap(nbrsList []int) (map[int][]int, error) {
-	// Declare map
-	var factorsMap map[int][]int
-
 	// Create empty map
-	factorsMap = make(map[int][]int)
+	factorsMap := make(map[int][]int)
 
 	// Declare factorsList
 	var factorsList []int
@@ -86,7 +83,7 @@ func BuildFactorsMap(nbrsList []int) (map[int][]int, error) {
 	}
 
 	if len(factorsMap) == 0 {
-		return nil, errors.New("Error: factors map should not be empty")
+		return nil, errors.New("error - factors map should not be empty")
 	}
 
 	return factorsMap, nil
@@ -117,8 +114,7 @@ func BuildPrimesMap(nbrsList []int) (map[int][]int, error) {
 			}
 		}
 	} else {
-		errorMsg := fmt.Sprintf("Error: primes use factors to build prime map, factor map should not be empty\n")
-		return nil, errors.New(errorMsg)
+		return nil, errors.New("error - primes use factors to build prime map, factor map should not be empty")
 	}
 
 	return primesMap, nil
