@@ -15,29 +15,43 @@ func TestBuildFactorsList(t *testing.T) {
 	nbrsToGenerate := 10
 
 	// Set maximum value
-	maxValue := 100
+	maxValue := 50
 
 	// Generate
-	nbrList, err := mathutils.GenerateInts(nbrsToGenerate, maxValue)
+	gotNbrList, err := mathutils.GenerateInts(nbrsToGenerate, maxValue)
 
 	if err != nil {
-		logMsg := fmt.Sprintf("Error: %v\n", err)
+		logMsg := fmt.Sprintf("Error - %v\n", err)
 		t.Errorf(logMsg)
+	} else {
+		// Check to make sure that the number of items created is correct
+		gotNbrListSize := len(gotNbrList)
+		if gotNbrListSize != nbrsToGenerate {
+			logMsg := fmt.Sprintf("Error - invalid gotNbrList size %v\n", gotNbrListSize)
+			t.Errorf(logMsg)
+		}
 	}
 
 	// Deslare number list
 	var gotFactorList []int
 
 	// Build factors for each number
-	for _, nbr := range nbrList {
-		gotFactorList = algebra.BuildFactorsList(nbr)
-
-		if len(gotFactorList) == 0 {
-			logMsg := fmt.Sprintf("Error: newNbr %d has no factors - %v\n", nbr, err)
+	for _, gotNbr := range gotNbrList {
+		// Check to make sure that each number is a valid number
+		if gotNbr < 0 || gotNbr > maxValue {
+			logMsg := fmt.Sprintf("Error - gotNbr out of range: %v\n", gotNbr)
 			t.Errorf(logMsg)
 		}
 
-		logMsg := fmt.Sprintf("%d has factors: %v\n", nbr, gotFactorList)
+		gotFactorList = algebra.BuildFactorsList(gotNbr)
+
+		// Each number generated should at least 2 factors
+		if len(gotFactorList) == 0 {
+			logMsg := fmt.Sprintf("Error: gotNbr %d has no factors\n", gotNbr)
+			t.Errorf(logMsg)
+		}
+
+		logMsg := fmt.Sprintf("%d has %d factors\n", gotNbr, gotFactorList)
 		t.Log(logMsg)
 	}
 
