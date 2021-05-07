@@ -63,3 +63,21 @@ $ ./factorsandprime -factor -prime -generate 10 50
 
 This command will generate 10 numbers from 1- 50 and display the factors and primes for ech number
 ```
+### Testing Factors and Primes
+
+Test modules have been provided.
+
+Testing the entire tree:
+```
+**Note:** Make sure you're in the root directory of the project
+$ go test -v ./...
+
+This command runs all the tests in the project tree and provides verbose information
+```
+Testing a single module:
+```
+**Note:** Make sure you're in the root directory of the project
+$ go test -v ./algebra
+
+This command runs all the tests in the algebra sub-directory
+```
