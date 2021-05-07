@@ -4,7 +4,8 @@ Factors and Primes is a Go CLI application that displays factors and prime numbe
 ### Usage Factors and Primes
 **Note:** Assuming the following command was used to build the executable: `go build -o <output filename>`, .
 
-Display the usage message:
+```
+Usage:
 $ ./factorsandprimes <-factor> <-prime> <-generate {nbrOfItemsToGenerate} {maxValue}>
 
 Explanation:
@@ -12,7 +13,11 @@ Explanation:
   * <-prime> - this flag is used to signify that prime number are outputted
   * <-generate {nbrOfItemsToGenerate} {maxValue}> - this flag signifies that the number will be generated. **Note:** When this flag is used both valus are required
 
-When -factor or -prime is used the user will be asked to enter the values (separated by spaces).
+Examples:
+ $ ./factorsandprimes -factor - the application will ask the user to enter numbers separated by spaces, then the factors for those numbers are returned
+ $ ./factorsandprimes -prime - the application will ask the user to enter numbers separated by spaces, then the prime factors for those numbers are returned
+ $ ./factorsandprimes -factor -prime - the application will ask the user to enter numbers separated by spaces, then the factors and prime factors for those numbers are returned
+```
 
 ### Requirements
 
@@ -27,57 +32,69 @@ Clone Factors and Primes (https://github.com/sflewis2970/factorsandprimes) proje
 
 Build Factors and Prime
 ```
-**Note:** Make sure you're in the root directory of the project
-$ go build main.go
+The following command will create an output file called 'main.exe':
 
-This command will create an outpuyt file called 'main.exe'
+$ go build main.go
 ```
-**Note:** Make sure you're in the root directory of the project
+
+```
+The following command will create an output file called '<filename>.exe'
+
 $ go build -o <filename>.exe
-  
-This command will create an output file called '<filename>.exe'
 ```
 
 ### Running Factors and Primes
 
 Run without building:
 ```
-**Note:** Make sure you're in the root directory of the project
-$ go run main.go
+The following command will run the factors and primes application without building the application:
 
-This command will run the factors and primes without the need to build an executable
+$ go run main.go
 ```
 
 Run the build:
 ```
-**Note:** Assuming the output file is 'factorsandprimes.exe'
-$ ./factorsandprime -factor
-
 This command will ask the user to enter numbers separated by spaces, then return thet factors for that that number
-```
-$ ./factorsandprime -factor -prime
 
+$ ./factorsandprime -factor
+```
+
+```
 This command will ask the user to enter numbers separated by spaces, then return thet factors AND primes for that that number
-```
-$ ./factorsandprime -factor -prime -generate 10 50
 
-This command will generate 10 numbers from 1- 50 and display the factors and primes for ech number
+$ ./factorsandprime -factor -prime
 ```
+
+```
+The following command will generate 10 numbers from 1- 50 and display the factors and primes for each number
+
+$ ./factorsandprime -factor -prime -generate 10 50
+```
+
 ### Testing Factors and Primes
 
 Test modules have been provided.
 
 Testing the entire tree:
+
 ```
-**Note:** Make sure you're in the root directory of the project
+The following command runs all the tests in the project tree and provides verbose information
+
 $ go test -v ./...
-
-This command runs all the tests in the project tree and provides verbose information
 ```
+
+Testing the modules in the current directory:
+
+```
+The following command runs all the tests in the project tree and provides verbose information
+
+$ go test -v
+```
+
 Testing a single module:
-```
-**Note:** Make sure you're in the root directory of the project
-$ go test -v ./algebra
 
-This command runs all the tests in the algebra sub-directory
+```
+The following command runs all the tests in the algebra sub-directory
+
+$ go test -v ./algebra
 ```
