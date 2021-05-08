@@ -1,49 +1,28 @@
 package algebra
 
 import (
-	"bufio"
 	"errors"
 	"fmt"
-	"os"
-	"strconv"
-	"strings"
+
+	commonutils "github.com/sflewis2970/factorsandprimes/common"
 )
 
 // Numbers ...Numbers gets input from the user from the user to build the number.
 func Numbers() ([]int, error) {
-	// Declare factorsList
-	var nbrsList []int
-
-	// Setup new reader object
-	reader := bufio.NewReader(os.Stdin)
-
-	// Get input from user
-	fmt.Print("Enter input values (seperated by spaces): ")
-	text, err := reader.ReadString('\n')
-
+	text, err := commonutils.GetConsoleInput()
 	if err != nil {
 		errorMsg := fmt.Sprintf("Error: %v\n", err)
 		return nil, errors.New(errorMsg)
 	}
 
-	// Remove carriage return and line feed
-	text = strings.Replace(text, "\r\n", "", -1)
+	text = commonutils.RemoveCRLF(text)
 
-	// Build a slice of the entered values
-	strSlice := strings.Split(text, " ")
+	nbrListStr := commonutils.SplitTxt(text, " ")
 
-	// Convert each value in the slice to an int
-	for _, strSliceVal := range strSlice {
-		// Convert string to number
-		sliceNbr, err := strconv.Atoi(strSliceVal)
-
-		if err != nil {
-			errorMsg := fmt.Sprintf("Error: %v\n", err)
-			return nil, errors.New(errorMsg)
-		}
-
-		// Add number to nbrs list
-		nbrsList = append(nbrsList, sliceNbr)
+	nbrsList, err := commonutils.BuildNbrList(nbrListStr)
+	if err != nil {
+		errorMsg := fmt.Sprintf("Error: %v\n", err)
+		return nil, errors.New(errorMsg)
 	}
 
 	return nbrsList, nil
