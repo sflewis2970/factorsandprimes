@@ -1,22 +1,25 @@
 # Factors and Primes
-Factors and Primes is a Go CLI application that displays factors and prime numbers from the given value(s).
+Factors and Primes is a Go CLI application that takes input from the user or generates values for the user.
+Those values are used to determine the factors for each number and when the flag is set determines whether 
+the numbers are prime numbers.
 
 ### Usage Factors and Primes
-**Note:** Assuming the following command was used to build the executable: `go build -o <output filename>`, .
-
 ```
 Usage:
-$ ./factorsandprimes <-factor> <-prime> <-generate {nbrOfItemsToGenerate} {maxValue}>
+$ ./factorsandprimes <-factor> <-prime> <-generate ''> <-generate '{nbrOfItemsToGenerate} {maxValue}'>
 
 Explanation:
-  * <-factor> - this flag is used to signify that factors are outputted 
-  * <-prime> - this flag is used to signify that prime number are outputted
-  * <-generate {nbrOfItemsToGenerate} {maxValue}> - this flag signifies that the number will be generated. **Note:** When this flag is used both valus are required
+  * <-factor> - when this flag is set, the factors each number are returned
+  * <-prime> - when this flag is set, prime numbers are returned
+  * <-inputdata '{list of numbers separated by space}'> - when this flag is used, the next string is a list of numbers used as input
+  * <-generate {nbrOfItemsToGenerate} {maxValue}> - when flag is used, the next string is 
 
 Examples:
- $ ./factorsandprimes -factor - the application will ask the user to enter numbers separated by spaces, then the factors for those numbers are returned
- $ ./factorsandprimes -prime - the application will ask the user to enter numbers separated by spaces, then the prime factors for those numbers are returned
- $ ./factorsandprimes -factor -prime - the application will ask the user to enter numbers separated by spaces, then the factors and prime factors for those numbers are returned
+ The following command uses input data as input and returns the factors of each number:
+ $ ./factorsandprimes -factor -inputdata '13 26 39' 
+ 
+ The following command generates 10 number from 1-100, then returns the factors for each number and which numbers are prime numbers
+ $ ./factorsandprimes -factor -prime -generate '10 100'
 ```
 
 ### Requirements
@@ -47,28 +50,22 @@ $ go build -o <filename>.exe
 
 Run without building:
 ```
-The following command will run the factors and primes application without building the application:
+The following command will run the factors and primes application without building the application.
 
 $ go run main.go
 ```
 
 Run the build:
 ```
-This command will ask the user to enter numbers separated by spaces, then return thet factors for that that number
+This command will generate 10 numbers from 1-100 and return the factors for each number
 
-$ ./factorsandprime -factor
+$ ./factorsandprime -factor -generate '10 100'
 ```
 
 ```
-This command will ask the user to enter numbers separated by spaces, then return thet factors AND primes for that that number
+This command will generate 10 numbers from 1-100 and return the factors for each number and which numbers that are prime numbers
 
-$ ./factorsandprime -factor -prime
-```
-
-```
-The following command will generate 10 numbers from 1- 50 and display the factors and primes for each number
-
-$ ./factorsandprime -factor -prime -generate 10 50
+$ ./factorsandprime -factor -prime -generate '10 100'
 ```
 
 ### Testing Factors and Primes
