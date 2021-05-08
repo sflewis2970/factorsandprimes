@@ -6,7 +6,7 @@ the numbers are prime numbers.
 ### Usage Factors and Primes
 ```
 Usage:
-$ ./factorsandprimes <-factor> <-prime> <-generate ''> <-generate '{nbrOfItemsToGenerate} {maxValue}'>
+$ ./factorsandprimes <-factor> <-prime> <-generate '{list of numbers separated by space}'> <-generate '{nbrOfItemsToGenerate} {maxValue}'>
 
 Explanation:
   * <-factor> - when this flag is set, the factors each number are returned
